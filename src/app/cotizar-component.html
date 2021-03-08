@@ -36,6 +36,6 @@
     <button mat-button color="primary" type="button" (click)="clickCotizar()"><i class="fa fa-save "></i> Cotizar</button>
     <br/>
     <br/>
-    <span>{{tipoCambioFinal}}</span>
+    <span [ngStyle]="setMyStyles()">{{tipoCambioFinal}}</span>
     </mat-card-content>
 </mat-card>

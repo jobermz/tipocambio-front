@@ -46,11 +46,21 @@ export class CotizarComponent implements OnInit {
       }
     }
   }
+  setMyStyles() {
+    let styles = {
+      'color': this.colorMsg
+    };
+    return styles;
+  }
+  colorMsg:string = "black";
   clickCotizar() {
     console.log("clickCotizar() monto:"+this.monto+" monedaOrigen="+this.monedaOrigen+" monedaDestino="+this.monedaDestino);
     if(this.monedaOrigen == this.monedaDestino) {
       this.tipoCambioFinal = "Por favor seleccione un par de monedas diferentes";
+      this.colorMsg = "red";
       return;
+    } else {
+      this.colorMsg = "black";
     }
     let req:CotizacionRequestDto;
     req = {
