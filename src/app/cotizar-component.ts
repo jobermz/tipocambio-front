@@ -55,7 +55,19 @@ export class CotizarComponent implements OnInit {
   colorMsg:string = "black";
   clickCotizar() {
     console.log("clickCotizar() monto:"+this.monto+" monedaOrigen="+this.monedaOrigen+" monedaDestino="+this.monedaDestino);
-    if(this.monedaOrigen == this.monedaDestino) {
+    if(this.monto == undefined || this.monto <= 0) {
+      this.tipoCambioFinal = "Por favor ingrese un valor mayor a cero en el campo monto";
+      this.colorMsg = "red";
+      return;
+    } else if(this.monedaOrigen == undefined || this.monedaOrigen == '') {
+      this.tipoCambioFinal = "Por favor seleccione la moneda origen";
+      this.colorMsg = "red";
+      return;
+    } else if(this.monedaDestino == undefined || this.monedaDestino == '') {
+      this.tipoCambioFinal = "Por favor seleccione la moneda destino";
+      this.colorMsg = "red";
+      return;
+    } else if(this.monedaOrigen == this.monedaDestino) {
       this.tipoCambioFinal = "Por favor seleccione un par de monedas diferentes";
       this.colorMsg = "red";
       return;
