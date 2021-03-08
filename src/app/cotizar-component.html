@@ -16,7 +16,7 @@
     <mat-form-field appearance="fill">
         <mat-label>Monedas</mat-label>
         
-        <mat-select #selectMonedaOrigen (selectionChange)="changeSelectMonedaOrigen($event)" [(ngModel)]="monedaOrigen" [ngModelOptions]="{standalone: true}">
+        <mat-select (selectionChange)="changeSelectMonedaOrigen($event)" [(ngModel)]="monedaOrigen" [ngModelOptions]="{standalone: true}">
             <mat-option value="PEN">Soles</mat-option>
             <mat-option value="USD">Dolares</mat-option>
             <mat-option value="EUR">Euros</mat-option>
@@ -26,7 +26,6 @@
     <h4>Modena Destino</h4>
     <mat-form-field appearance="fill">
         <mat-label>Monedas</mat-label>
-
         <mat-select #selectMonedaDestino [(ngModel)]="monedaDestino" [ngModelOptions]="{standalone: true}">
             <mat-option value="PEN">Soles</mat-option>
             <mat-option value="USD">Dolares</mat-option>

@@ -20,7 +20,7 @@ export class CotizarComponent implements OnInit {
   tipoCambioFinal:string;
   constructor(private tipoCambioService:TipoCambioService) {
   }
-  @ViewChild(MatSelect) selectMonedaOrigen: MatSelect;
+  //@ViewChild(MatSelect) selectMonedaOrigen: MatSelect;
   @ViewChild(MatSelect) selectMonedaDestino: MatSelect;
   ngOnInit() {
     console.log("INIT():");
@@ -48,7 +48,7 @@ export class CotizarComponent implements OnInit {
   }
   clickCotizar() {
     console.log("clickCotizar() monto:"+this.monto+" monedaOrigen="+this.monedaOrigen+" monedaDestino="+this.monedaDestino);
-    if(this.selectMonedaOrigen.value == this.selectMonedaDestino.value) {
+    if(this.monedaOrigen == this.monedaDestino) {
       this.tipoCambioFinal = "Por favor seleccione un par de monedas diferentes";
       return;
     }
