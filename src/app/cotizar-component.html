@@ -11,24 +11,27 @@
         <input matInput placeholder="Ex. 1000"  [(ngModel)]="monto" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
 
+
     <h4>Modena Origen</h4>
     <mat-form-field appearance="fill">
         <mat-label>Monedas</mat-label>
-        <select matNativeControl required  [(ngModel)]="monedaOrigen" [ngModelOptions]="{standalone: true}">
-        <option value="PEN">Soles</option>
-        <option value="USD">Dolares</option>
-        <option value="EUR">Euros</option>
-        </select>
+        
+        <mat-select #selectMonedaOrigen (selectionChange)="changeSelectMonedaOrigen($event)" [(ngModel)]="monedaOrigen" [ngModelOptions]="{standalone: true}">
+            <mat-option value="PEN">Soles</mat-option>
+            <mat-option value="USD">Dolares</mat-option>
+            <mat-option value="EUR">Euros</mat-option>
+        </mat-select>
     </mat-form-field>
     
     <h4>Modena Destino</h4>
     <mat-form-field appearance="fill">
         <mat-label>Monedas</mat-label>
-        <select matNativeControl required  [(ngModel)]="monedaDestino" [ngModelOptions]="{standalone: true}">
-        <option value="PEN">Soles</option>
-        <option value="USD">Dolares</option>
-        <option value="EUR">Euros</option>
-        </select>
+
+        <mat-select #selectMonedaDestino [(ngModel)]="monedaDestino" [ngModelOptions]="{standalone: true}">
+            <mat-option value="PEN">Soles</mat-option>
+            <mat-option value="USD">Dolares</mat-option>
+            <mat-option value="EUR">Euros</mat-option>
+        </mat-select>
     </mat-form-field>
     <br/>
     <button mat-button color="primary" type="button" (click)="clickCotizar()"><i class="fa fa-save "></i> Cotizar</button>

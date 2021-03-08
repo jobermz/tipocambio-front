@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { MatSelect } from '@angular/material/select';
 import { CotizacionRequestDto } from './modelo/CotizacionRequestDto.';
 import { CotizacionResponseDto } from './modelo/CotizacionResponseDto';
 import { ResponseDto } from './modelo/ResponseDto';
@@ -19,12 +20,38 @@ export class CotizarComponent implements OnInit {
   tipoCambioFinal:string;
   constructor(private tipoCambioService:TipoCambioService) {
   }
-    
+  @ViewChild(MatSelect) selectMonedaOrigen: MatSelect;
+  @ViewChild(MatSelect) selectMonedaDestino: MatSelect;
   ngOnInit() {
     console.log("INIT():");
   }
+  /*changeSelectMonedaDestino(e:any) {
+    for(var matOption of this.selectMonedaOrigen.options) {
+      if(matOption.value == e.value) {
+        matOption.disabled = true;
+      } else {
+        matOption.disabled = false;
+      }
+    }
+  }*/
+
+  changeSelectMonedaOrigen(e:any) {
+    console.log("changeSelectMonedaOrigen(): e.value "+e.value);
+
+    for(var matOption of this.selectMonedaDestino.options) {
+      if(matOption.value == e.value) {
+        matOption.disabled = true;
+      } else {
+        matOption.disabled = false;
+      }
+    }
+  }
   clickCotizar() {
     console.log("clickCotizar() monto:"+this.monto+" monedaOrigen="+this.monedaOrigen+" monedaDestino="+this.monedaDestino);
+    if(this.selectMonedaOrigen.value == this.selectMonedaDestino.value) {
+      this.tipoCambioFinal = "Por favor seleccione un par de monedas diferentes";
+      return;
+    }
     let req:CotizacionRequestDto;
     req = {
       monto:this.monto,
